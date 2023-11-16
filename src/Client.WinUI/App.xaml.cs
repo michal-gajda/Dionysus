@@ -10,9 +10,9 @@ using Microsoft.Extensions.Logging;
 
 public partial class App : System.Windows.Application
 {
-    protected override void OnStartup(System.Windows.StartupEventArgs args)
+    protected override void OnStartup(System.Windows.StartupEventArgs e)
     {
-        base.OnStartup(args);
+        base.OnStartup(e);
 
         IServiceCollection services = new ServiceCollection();
 

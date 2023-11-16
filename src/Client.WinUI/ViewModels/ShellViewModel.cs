@@ -25,7 +25,7 @@ public partial class ShellViewModel : ObservableObject
     }
 
     [ObservableProperty]
-    private ObservableCollection<Product> items;
+    private ObservableCollection<Product> items = new();
 
     [ObservableProperty]
     private Product? selectedItem;
@@ -36,7 +36,9 @@ public partial class ShellViewModel : ObservableObject
     {
         this.logger.LogInformation("{CommandName}", "OkCommandExecuteAsync");
 
-        this.items.Add(new Product { Id = Guid.NewGuid() });
+        this.Items.Add(new Product { Id = Guid.NewGuid() });
+
+        this.Title = $"Shell View - {DateTime.Now.Ticks}";
 
         await Task.CompletedTask;
     }
