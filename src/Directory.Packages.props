@@ -1,0 +1,9 @@
+<Project>
+    <PropertyGroup>
+        <Authors>Michal Gajda</Authors>
+        <Company>NAVIGAL Sp. z o.o.</Company>
+        <TargetFramework>net8.0</TargetFramework>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <ProductName>Dionysus</ProductName>
+    </PropertyGroup>
+</Project>
