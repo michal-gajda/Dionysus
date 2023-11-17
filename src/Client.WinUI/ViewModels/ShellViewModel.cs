@@ -63,7 +63,7 @@ public partial class ShellViewModel : ObservableObject
     private async Task OpenPurchaseOrdersAsync(CancellationToken cancellationToken = default)
     {
         var viewModel = new PurchaseOrdersViewModel(this.mediator);
-        _ = dialogService.ShowDialog<PurchaseOrdersView>(this, viewModel);
+        _ = dialogService.ShowDialog(this, viewModel);
 
         await Task.CompletedTask;
     }

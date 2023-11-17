@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MvvmDialogs;
+using MvvmDialogs.DialogTypeLocators;
 
 public partial class App : System.Windows.Application
 {
@@ -33,6 +34,7 @@ public partial class App : System.Windows.Application
 
         services.AddTransient<ShellViewModel>();
         services.AddTransient<ProductCatalogViewModel>();
+        services.AddSingleton<IDialogTypeLocator, DialogTypeLocator>();
 
         IServiceProvider provider = services.BuildServiceProvider();
 
