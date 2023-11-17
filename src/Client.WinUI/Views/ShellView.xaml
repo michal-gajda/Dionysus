@@ -4,9 +4,42 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
     Title="{Binding Title}"
     Width="800"
     Height="450"
+    md:DialogServiceViews.IsRegistered="True"
     mc:Ignorable="d">
-    <Button Command="{Binding OkCommand}" Content="OK" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Command="{Binding ExitCommand}" Header="_Exit" />
+            </MenuItem>
+            <MenuItem Header="_Catalogs">
+                <MenuItem Command="{Binding OpenProductCatalogCommand}" Header="_Products" />
+            </MenuItem>
+            <MenuItem Header="_Orders">
+                <MenuItem Command="{Binding OpenPurchaseOrdersCommand}" Header="_Purchase" />
+                <MenuItem Command="{Binding OpenSalesOrdersCommand}" Header="_Sales" />
+            </MenuItem>
+        </Menu>
+        <ToolBarTray Grid.Row="1">
+            <ToolBar>
+                <Button Command="{Binding OpenProductCatalogCommand}" Content="Products" />
+                <Separator />
+                <Button Command="{Binding OpenPurchaseOrdersCommand}" Content="Purchase" />
+                <Button Command="{Binding OpenSalesOrdersCommand}" Content="Sales" />
+            </ToolBar>
+        </ToolBarTray>
+        <ContentControl Grid.Row="2" />
+        <StatusBar Grid.Row="3">
+            <Label Content="Ready" />
+        </StatusBar>
+    </Grid>
 </Window>

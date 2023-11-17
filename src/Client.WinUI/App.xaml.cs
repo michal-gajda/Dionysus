@@ -7,6 +7,7 @@ using Dionysus.Client.WinUI.ViewModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MvvmDialogs;
 
 public partial class App : System.Windows.Application
 {
@@ -28,7 +29,10 @@ public partial class App : System.Windows.Application
         services.AddApplication();
         services.AddInfrastructure(configuration);
 
+        services.AddSingleton<IDialogService, DialogService>();
+
         services.AddTransient<ShellViewModel>();
+        services.AddTransient<ProductCatalogViewModel>();
 
         IServiceProvider provider = services.BuildServiceProvider();
 
