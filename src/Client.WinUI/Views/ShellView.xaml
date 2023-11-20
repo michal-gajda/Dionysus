@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:icons="clr-namespace:Material.Icons.WPF;assembly=Material.Icons.WPF"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:md="https://github.com/fantasticfiasco/mvvm-dialogs"
     Title="{Binding Title}"
@@ -18,23 +19,23 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Menu Grid.Row="0">
-            <MenuItem Header="_File">
-                <MenuItem Command="{Binding ExitCommand}" Header="_Exit" />
+            <MenuItem Header="{DynamicResource ResourceKey=MenuFileLabel}">
+                <MenuItem Command="{Binding Path=ExitCommand}" Header="{DynamicResource ResourceKey=MenuExitLabel}" />
             </MenuItem>
-            <MenuItem Header="_Catalogs">
-                <MenuItem Command="{Binding OpenProductCatalogCommand}" Header="_Products" />
+            <MenuItem Header="{DynamicResource ResourceKey=MenuCatalogsLabel}">
+                <MenuItem Command="{Binding Path=OpenProductCatalogCommand}" Header="{DynamicResource ResourceKey=MenuProductsLabel}" />
             </MenuItem>
-            <MenuItem Header="_Orders">
-                <MenuItem Command="{Binding OpenPurchaseOrdersCommand}" Header="_Purchase" />
-                <MenuItem Command="{Binding OpenSalesOrdersCommand}" Header="_Sales" />
+            <MenuItem Header="{DynamicResource ResourceKey=MenuOrdersLabel}">
+                <MenuItem Command="{Binding Path=OpenPurchaseOrdersCommand}" Header="_Purchases" />
+                <MenuItem Command="{Binding Path=OpenSalesOrdersCommand}" Header="_Sales" />
             </MenuItem>
         </Menu>
         <ToolBarTray Grid.Row="1">
             <ToolBar>
-                <Button Command="{Binding OpenProductCatalogCommand}" Content="Products" />
+                <Button Command="{Binding Path=OpenProductCatalogCommand}" Content="{DynamicResource ResourceKey=ProductsLabel}" />
                 <Separator />
-                <Button Command="{Binding OpenPurchaseOrdersCommand}" Content="Purchase" />
-                <Button Command="{Binding OpenSalesOrdersCommand}" Content="Sales" />
+                <Button Command="{Binding Path=OpenPurchaseOrdersCommand}" Content="{DynamicResource ResourceKey=PurchasesLabel}" />
+                <Button Command="{Binding Path=OpenSalesOrdersCommand}" Content="{DynamicResource ResourceKey=SalesLabel}" />
             </ToolBar>
         </ToolBarTray>
         <ContentControl Grid.Row="2" />

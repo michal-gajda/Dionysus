@@ -14,16 +14,11 @@ public sealed class DialogTypeLocator : IDialogTypeLocator
             throw new ArgumentNullException(nameof(viewModel));
         }
 
-        if (viewModel is PurchaseOrdersViewModel)
+        return viewModel switch
         {
-            return typeof(PurchaseOrdersView);
-        }
-
-        if (viewModel is ShellViewModel)
-        {
-            return typeof(ShellView);
-        }
-
-        throw new ArgumentException($"No dialog view type found for view model type {viewModel.GetType()}");
+            PurchaseOrdersViewModel => typeof(PurchaseOrdersView),
+            ShellViewModel => typeof(ShellView),
+            _ => throw new ArgumentException($"No dialog view type found for view model type {viewModel.GetType()}"),
+        };
     }
 }

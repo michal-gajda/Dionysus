@@ -5,14 +5,17 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="PurchaseOrdersView"
+    xmlns:vm="clr-namespace:Dionysus.Client.WinUI.ViewModels"
+    Title="{DynamicResource ResourceKey=PurchaseOrdersLabel}"
     Width="800"
     Height="450"
+    d:DataContext="{d:DesignInstance vm:PurchaseOrdersViewModel,
+                                     IsDesignTimeCreatable=True}"
     WindowStartupLocation="CenterOwner"
     mc:Ignorable="d">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
-            <i:InvokeCommandAction Command="{Binding LoadSalesOrdersCommand}" />
+            <i:InvokeCommandAction Command="{Binding Path=LoadSalesOrdersCommand}" />
         </i:EventTrigger>
     </i:Interaction.Triggers>
     <Grid>
@@ -25,9 +28,9 @@
         <ToolBarTray Grid.Row="0">
             <ToolBar>
                 <Button
-                    Command="{Binding CompleteOrderCommand}"
-                    CommandParameter="{Binding SelectedItem}"
-                    Content="Complete" />
+                    Command="{Binding Path=CompleteOrderCommand}"
+                    CommandParameter="{Binding Path=SelectedItem}"
+                    Content="{DynamicResource ResourceKey=CompleteLabel}" />
             </ToolBar>
         </ToolBarTray>
         <DataGrid
@@ -40,38 +43,38 @@
             CanUserResizeRows="False"
             CanUserSortColumns="True"
             HeadersVisibility="Column"
-            ItemsSource="{Binding Items}"
-            SelectedItem="{Binding SelectedItem}"
+            ItemsSource="{Binding Path=Items}"
+            SelectedItem="{Binding Path=SelectedItem}"
             SelectionMode="Single"
             SelectionUnit="FullRow">
             <DataGrid.Columns>
                 <DataGridTextColumn
                     Width="Auto"
-                    Binding="{Binding Id}"
-                    Header="Id" />
+                    Binding="{Binding Path=Id}"
+                    Header="{DynamicResource ResourceKey=IdLabel}" />
                 <DataGridTextColumn
                     Width="Auto"
-                    Binding="{Binding SupplierId}"
-                    Header="Supplier Id" />
+                    Binding="{Binding Path=SupplierId}"
+                    Header="{DynamicResource ResourceKey=SupplierIdLabel}" />
                 <DataGridTextColumn
                     Width="*"
-                    Binding="{Binding Name}"
-                    Header="Name" />
+                    Binding="{Binding Path=Name}"
+                    Header="{DynamicResource ResourceKey=NameLabel}" />
                 <DataGridTextColumn
                     Width="Auto"
-                    Binding="{Binding SupplyDate}"
-                    Header="Supply Date" />
+                    Binding="{Binding Path=SupplyDate}"
+                    Header="{DynamicResource ResourceKey=SupplyDateLabel}" />
             </DataGrid.Columns>
         </DataGrid>
         <DataGrid Grid.Row="2" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Width="Auto" Header="Id" />
-                <DataGridTextColumn Width="*" Header="Name" />
-                <DataGridTextColumn Width="Auto" Header="Quantity" />
-                <DataGridTextColumn Width="Auto" Header="Unit Price" />
-                <DataGridTextColumn Width="Auto" Header="Value Price" />
-                <DataGridTextColumn Width="Auto" Header="State" />
-                <DataGridTextColumn Width="Auto" Header="Warehouse" />
+                <DataGridTextColumn Width="Auto" Header="{DynamicResource ResourceKey=IdLabel}" />
+                <DataGridTextColumn Width="*" Header="{DynamicResource ResourceKey=NameLabel}" />
+                <DataGridTextColumn Width="Auto" Header="{DynamicResource ResourceKey=QuantityLabel}" />
+                <DataGridTextColumn Width="Auto" Header="{DynamicResource ResourceKey=UnitPriceLabel}" />
+                <DataGridTextColumn Width="Auto" Header="{DynamicResource ResourceKey=ValuePriceLabel}" />
+                <DataGridTextColumn Width="Auto" Header="{DynamicResource ResourceKey=StateLabel}" />
+                <DataGridTextColumn Width="Auto" Header="{DynamicResource ResourceKey=WarehouseLabel}" />
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
